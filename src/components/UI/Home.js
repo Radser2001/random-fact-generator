@@ -21,7 +21,9 @@ const Home = () => {
     return axios
       .request(options)
       .then(function (response) {
-        return response.data.text;
+        console.log(response.data.text);
+
+        return response.data;
       })
       .catch(function (error) {
         console.error(error);
@@ -30,7 +32,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col justify-center items-center font-MuseoModerno">
-      <h1 className="mt-12 text-white text-5xl md:text-7xl font-bold text-center">
+      <h1 className="mt-2 md:mt-12 text-white text-5xl md:text-7xl font-bold text-center">
         Random Fact Generator
       </h1>
       <p className="text-center mt-2 text-white text-2xl font-semibold">
@@ -38,7 +40,8 @@ const Home = () => {
       </p>
       <div className="mt-1">
         <RandomFact
-          numberFact={numberFact}
+          numberFact={numberFact?.text}
+          number={numberFact?.number}
           isLoading={isLoading}
           refetch={refetch}
         />

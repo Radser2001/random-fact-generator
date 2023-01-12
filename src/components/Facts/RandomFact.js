@@ -1,12 +1,12 @@
 import React from "react";
 
-const RandomFact = ({ numberFact, isLoading, refetch }) => {
+const RandomFact = ({ numberFact, number, isLoading, refetch }) => {
   return (
     <div className="font-MuseoModerno w-full">
       <div className=" max-w-sm rounded overflow-hidden mt-2 bg-white shadow-lg">
         <div className="px-6 py-4 ">
           <p className="text-gray-700 text-center  text-2xl">
-            {isLoading ? "Loading..." : numberFact}
+            {isLoading ? "Loading..." : `${number} is ${numberFact}`}
           </p>
         </div>
       </div>

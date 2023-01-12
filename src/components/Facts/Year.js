@@ -23,7 +23,7 @@ const Year = () => {
     return axios
       .request(options)
       .then(function (response) {
-        return response.data.text;
+        return response.data;
       })
       .catch(function (error) {
         console.error(error);
@@ -39,7 +39,7 @@ const Year = () => {
       </h1>
       <div className="border-b  py-2 border-teal-500">
         <input
-          className="appearance-none text-xl border-none  shadow-lg rounded p-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="appearance-none text-xl border-none  shadow-lg rounded p-2 md:p-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           onChange={setFactNumber}
           type="text"
           value={number}
@@ -47,7 +47,7 @@ const Year = () => {
 
         <button
           onClick={refetch}
-          className="p-4 text-white border-none bg-cyan-400 shadow-lg rounded-md ml-3 hover:cursor-pointer"
+          className="p-3 md:p-4 text-white border-none bg-cyan-400 shadow-lg rounded-md ml-1 md:ml-3 hover:cursor-pointer"
         >
           Generate
         </button>
@@ -55,7 +55,7 @@ const Year = () => {
       <div className="max-w-sm  rounded overflow-hidden mt-12 bg-white shadow-lg">
         <div className="px-6 py-4">
           <p className="text-gray-700 text-center text-2xl">
-            {isLoading ? "Loading..." : numberFact}
+            {isLoading ? "Loading..." : `${number} is ${numberFact.text}`}
           </p>
         </div>
       </div>
