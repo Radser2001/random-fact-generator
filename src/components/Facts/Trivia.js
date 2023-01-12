@@ -5,10 +5,29 @@ import React, { useState } from "react";
 const Trivia = () => {
   const [number, setNumber] = useState(112);
 
-  const { data: numberFact, refetch } = useQuery(["number"], () => {
+  const options = {
+    method: "GET",
+    url: "https://numbersapi.p.rapidapi.com/42/trivia",
+    params: { fragment: "true", notfound: "floor", json: "true" },
+    headers: {
+      "X-RapidAPI-Key": "ecf4a50be8mshc5561d86e64db21p139d08jsnde3ca57b054e",
+      "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+    },
+  };
+
+  const {
+    data: numberFact,
+    refetch,
+    isLoading,
+  } = useQuery(["number"], () => {
     return axios
-      .get(`http://numbersapi.com/${number}/year`)
-      .then((res) => res.data);
+      .request(options)
+      .then(function (response) {
+        return response.data.text;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   });
   const setFactNumber = (event) => {
     setNumber(event.target.value);
@@ -36,7 +55,9 @@ const Trivia = () => {
 
       <div className="max-w-sm  rounded overflow-hidden mt-12 bg-white shadow-lg">
         <div className="px-6 py-4">
-          <p className="text-gray-700 text-center text-2xl">{numberFact}</p>
+          <p className="text-gray-700 text-center text-2xl">
+            {isLoading ? "Loading..." : numberFact}
+          </p>
         </div>
       </div>
     </div>

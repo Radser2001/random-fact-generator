@@ -5,10 +5,30 @@ import React, { useState } from "react";
 const Math = () => {
   const [number, setNumber] = useState(34);
 
-  const { data: numberFact, refetch } = useQuery(["number"], () => {
+  const options = {
+    method: "GET",
+    url: `https://numbersapi.p.rapidapi.com/${number}/math`,
+    params: { fragment: "true", json: "true" },
+    headers: {
+      "X-RapidAPI-Key": "ecf4a50be8mshc5561d86e64db21p139d08jsnde3ca57b054e",
+      "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+    },
+  };
+
+  const {
+    data: numberFact,
+    refetch,
+    isLoading,
+  } = useQuery(["number"], () => {
     return axios
-      .get(`http://numbersapi.com/${number}/math`)
-      .then((res) => res.data);
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        return response.data.text;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   });
 
   const setFactNumber = (event) => {
@@ -38,7 +58,9 @@ const Math = () => {
 
       <div className="max-w-sm rounded overflow-hidden mt-12 bg-white shadow-lg ">
         <div className="px-6 py-4">
-          <p className="text-gray-700 text-center text-2xl">{numberFact}</p>
+          <p className="text-gray-700 text-center text-2xl">
+            {isLoading ? "Loading..." : numberFact}
+          </p>
         </div>
       </div>
     </div>

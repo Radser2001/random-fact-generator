@@ -4,8 +4,28 @@ import axios from "axios";
 import RandomFact from "../Facts/RandomFact";
 
 const Home = () => {
-  const { data: numberFact } = useQuery(["number"], () => {
-    return axios.get(`http://numbersapi.com/random`).then((res) => res.data);
+  const options = {
+    method: "GET",
+    url: "https://numbersapi.p.rapidapi.com/random/trivia",
+    params: { min: "10", max: "20", fragment: "true", json: "true" },
+    headers: {
+      "X-RapidAPI-Key": "ecf4a50be8mshc5561d86e64db21p139d08jsnde3ca57b054e",
+      "X-RapidAPI-Host": "numbersapi.p.rapidapi.com",
+    },
+  };
+  const {
+    data: numberFact,
+    isLoading,
+    refetch,
+  } = useQuery(["number"], () => {
+    return axios
+      .request(options)
+      .then(function (response) {
+        return response.data.text;
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   });
 
   return (
@@ -16,8 +36,12 @@ const Home = () => {
       <p className="text-center mt-2 text-white text-2xl font-semibold">
         Generate Interesting Facts About Numbers
       </p>
-      <div className="mt-3">
-        <RandomFact numberFact={numberFact} />
+      <div className="mt-1">
+        <RandomFact
+          numberFact={numberFact}
+          isLoading={isLoading}
+          refetch={refetch}
+        />
       </div>
     </div>
   );
