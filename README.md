@@ -2,7 +2,7 @@
 
 <h3><a href="https://random-fact-generator-radser2001.vercel.app/">Live Site</a></h3>
 
-#### Purpose of this project is to practice API fetching using useQuery Hook
+#### Purpose of this project is to practice API fetching using React Query hook
 #### Tech Stack Used: React / TailwindCSS
 
 <h4>Api Used: <a href="https://rapidapi.com/divad12/api/numbers-1/">NumbersApi</a></h4>
