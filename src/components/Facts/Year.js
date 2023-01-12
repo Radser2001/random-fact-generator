@@ -7,7 +7,7 @@ const Year = () => {
 
   const options = {
     method: "GET",
-    url: "https://numbersapi.p.rapidapi.com/1492/year",
+    url: `https://numbersapi.p.rapidapi.com/${number}/year`,
     params: { fragment: "true", json: "true" },
     headers: {
       "X-RapidAPI-Key": "ecf4a50be8mshc5561d86e64db21p139d08jsnde3ca57b054e",

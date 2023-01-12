@@ -7,7 +7,7 @@ const Trivia = () => {
 
   const options = {
     method: "GET",
-    url: "https://numbersapi.p.rapidapi.com/42/trivia",
+    url: `https://numbersapi.p.rapidapi.com/${number}/trivia`,
     params: { fragment: "true", notfound: "floor", json: "true" },
     headers: {
       "X-RapidAPI-Key": "ecf4a50be8mshc5561d86e64db21p139d08jsnde3ca57b054e",

@@ -6,7 +6,7 @@ const RandomFact = ({ numberFact, number, isLoading, refetch }) => {
       <div className=" max-w-sm rounded overflow-hidden mt-2 bg-white shadow-lg">
         <div className="px-6 py-4 ">
           <p className="text-gray-700 text-center  text-2xl">
-            {isLoading ? "Loading..." : `${numberFact.number} is ${numberFact}`}
+            {isLoading ? "Loading..." : `${number} is ${numberFact}`}
           </p>
         </div>
       </div>
