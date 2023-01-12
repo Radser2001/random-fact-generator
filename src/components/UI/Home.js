@@ -21,8 +21,6 @@ const Home = () => {
     return axios
       .request(options)
       .then(function (response) {
-        console.log(response.data.text);
-
         return response.data;
       })
       .catch(function (error) {

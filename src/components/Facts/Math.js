@@ -59,7 +59,9 @@ const Math = () => {
       <div className="max-w-sm rounded overflow-hidden mt-12 bg-white shadow-lg ">
         <div className="px-6 py-4">
           <p className="text-gray-700 text-center text-2xl">
-            {isLoading ? "Loading..." : `${number} is ${numberFact.text}`}
+            {isLoading
+              ? "Loading..."
+              : `${numberFact.number} is ${numberFact.text}`}
           </p>
         </div>
       </div>
