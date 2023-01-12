@@ -1,6 +1,3 @@
-import "./App.css";
-import "antd/dist/reset.css";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Math from "./components/Facts/Math";
